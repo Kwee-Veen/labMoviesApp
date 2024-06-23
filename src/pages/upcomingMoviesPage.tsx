@@ -24,8 +24,6 @@ const genreFiltering = {
 };
 
 const UpcomingMoviesPage: React.FC = () => {
-  // lol I  implemented this step earlier without realising. 
-  // Behold - caching! \o/
   const { data, error, isLoading, isError } = useQuery<DiscoverMovies, Error>("upcoming", getUpcomingMovies);
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [titleFiltering, genreFiltering]
