@@ -1,4 +1,4 @@
-import React, { MouseEvent, useContext } from "react";
+import React, { useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -29,8 +29,8 @@ interface MovieCardProps {
   action: (m: BaseMovieProps) => React.ReactNode;
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({movie, action}) => {
-  const { favourites, addToFavourites } = useContext(MoviesContext);
+const MovieCard: React.FC<MovieCardProps> = ({ movie, action }) => {
+  const { favourites } = useContext(MoviesContext);
 
   const isFavourite = favourites.find((id) => id === movie.id) ? true : false;
 
@@ -75,7 +75,9 @@ const MovieCard: React.FC<MovieCardProps> = ({movie, action}) => {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-      {action(movie)}
+
+        {/* here for favourites icon thing */}
+        {action(movie)}
         <Link to={`/movies/${movie.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
